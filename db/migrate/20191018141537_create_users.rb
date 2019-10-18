@@ -3,7 +3,8 @@ class CreateUsers < ActiveRecord::Migration[5.2]
     create_table :users do |t|
 
       t.timestamps
-      t.boolean :admin
+      t.boolean :admin, default: false
+      t.string :name
     end
   end
 end

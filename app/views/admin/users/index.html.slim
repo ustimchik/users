@@ -1,0 +1,26 @@
+-# frozen_string_literal: true
+
+=link_to 'Создать пользователя', new_admin_user_path
+
+p Список пользователей
+- if @users.any?
+  .users
+    table
+      thead
+        tr
+          th ID
+          th Имя
+          th Когда зарегистрирован
+          th Последний вход
+          th colspan="2" Действия
+      tbody
+      - @users.each do |user|
+        tr
+          th= user.id
+          th= user.name
+          th= user.created_at
+          th= user.last_sign_in_at
+          th= link_to 'Редактировать', edit_admin_user_path(user)
+          th= link_to 'Удалить', admin_user_path(user), method: :delete, data: { confirm: 'Вы уверены?'}
+- else
+  p Пользователей еще не создано
