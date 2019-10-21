@@ -4,7 +4,9 @@ Rails.application.routes.draw do
   root to: 'welcome#index'
 
   namespace :admin do
-    resources :users
+    resources :users do
+      patch 'update_password', on: :collection
+    end
     root to: 'users#index'
   end
 end

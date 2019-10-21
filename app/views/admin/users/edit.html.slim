@@ -1,0 +1,22 @@
+p= 'Редактирование пользователя'
+
+= render 'form', user: @user
+
+= form_with model: [:admin, @user], local: true do |f|
+  = render 'shared/errors', resource: @user
+  = hidden_field_tag :id, @user.id
+  .field
+    br
+    = f.label :password, 'Новый пароль'
+    = f.password_field :password, autofocus: true
+    br
+  .field
+    br
+    = f.label :password_confirmation, 'Подтвердите пароль'
+    = f.password_field :password_confirmation
+    br
+  .actions
+    br
+    = f.submit 'Смена пароля'
+
+= link_to 'Назад', admin_users_path

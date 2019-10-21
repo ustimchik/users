@@ -15,7 +15,7 @@ p Список пользователей
           th colspan="2" Действия
       tbody
       - @users.each do |user|
-        tr
+        tr id="user_#{user.id}"
           th= user.id
           th= user.name
           th= user.created_at
